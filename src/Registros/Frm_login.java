@@ -1,9 +1,74 @@
 package Registros;
 
+import Metodos_SQL.ConexionBD;
+import Metodos_SQL.Metodos_SQL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 public class Frm_login extends javax.swing.JFrame {
 
     public Frm_login() {
         initComponents();
+        setLocationRelativeTo(null);
+    }
+    Metodos_SQL metodos = new Metodos_SQL();
+
+    public void validarAdmin() {
+
+        String usuario = txtCorreo.getText();
+        String contraseña = txtContraseña.getText();
+        if (usuario.equals("") && contraseña.equals("")) {
+            JOptionPane.showMessageDialog(null, "Por favor digite sus credenciales");
+        } else {
+            if (usuario.equals("Gerente") && contraseña.equals("123")) {
+
+                this.setVisible(false);
+
+                this.setVisible(false);
+
+            } else {
+
+                String sql = "select Nombre,Apellido,Servicio,Usuario,Contraseña from login where Usuario='" + usuario + "'";
+                try {
+                    Connection con = ConexionBD.conectar();
+                    PreparedStatement ps = con.prepareStatement(sql);
+                    ResultSet rs = ps.executeQuery();
+
+                    if (rs.next()) {
+                        String u = rs.getString("Usuario");
+                        String c = rs.getString("Contraseña");
+                        String s = rs.getString("Servicio");
+
+                        if (contraseña.equals(c)) {
+                            if (s.equals("Enfermero")) {
+
+                                this.setVisible(false);
+                            } else if (s.equals("Médico")) {
+
+                                this.setVisible(false);
+                            } else if (s.equals("Auxiliar")) {
+
+                                this.setVisible(false);
+                            }
+
+                        } else {
+                            JOptionPane.showMessageDialog(null, "La contraseña no es correcta");
+
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "El usuario no existe");
+                    }
+
+                } catch (SQLException ex) {
+                    System.out.println(ex.toString());
+
+                }
+            }
+        }
 
     }
 
