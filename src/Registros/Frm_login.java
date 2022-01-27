@@ -232,7 +232,7 @@ public class Frm_login extends javax.swing.JFrame {
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         // TODO add your handling code here:
-
+        validarAdmin();
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     /**
