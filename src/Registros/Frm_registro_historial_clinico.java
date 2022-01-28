@@ -430,7 +430,9 @@ public class Frm_registro_historial_clinico extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInternarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInternarActionPerformed
-     
+        Frm_registro_paciente_internado ventanaInternado = new Frm_registro_paciente_internado();
+        ventanaInternado.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnInternarActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
@@ -605,7 +607,7 @@ public class Frm_registro_historial_clinico extends javax.swing.JFrame {
                 pst.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Registro  Exitoso");
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error de Registro" + e.getMessage());
+                JOptionPane.showMessageDialog(null, "No se ha seleccionado los datos del paciente");
             }
         }
 

@@ -212,7 +212,7 @@ public class Frm_registro_historial_clinico_eliminar extends javax.swing.JFrame 
     }//GEN-LAST:event_MenuModificarActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        Frm_login ventana = new Frm_login();
+        Frm_registro_historial_clinico ventana = new Frm_registro_historial_clinico();
         ventana.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
@@ -320,7 +320,7 @@ public class Frm_registro_historial_clinico_eliminar extends javax.swing.JFrame 
                 JOptionPane.showMessageDialog(null, "Registro Eliminado");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al Eliminar Registro" + e.getMessage());
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado el historial clínico" );
         }
     }
 

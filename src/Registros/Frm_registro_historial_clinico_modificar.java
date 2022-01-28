@@ -418,7 +418,7 @@ public class Frm_registro_historial_clinico_modificar extends javax.swing.JFrame
     }//GEN-LAST:event_tblTablaHistorialClinicoMouseClicked
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        Frm_login ventana = new Frm_login();
+         Frm_registro_historial_clinico ventana = new Frm_registro_historial_clinico();
         ventana.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
@@ -564,7 +564,7 @@ public class Frm_registro_historial_clinico_modificar extends javax.swing.JFrame
                 pst.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Registro Actualizado");
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error de Actualiación" + e.getMessage());
+                JOptionPane.showMessageDialog(null, "No se ha seleccionado el historial clínico");
             }
         }
     }
