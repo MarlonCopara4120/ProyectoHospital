@@ -252,7 +252,7 @@ public class Frm_registro_paciente_internado_eliminar extends javax.swing.JFrame
                 JOptionPane.showMessageDialog(null, "Registro Eliminado");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al Eliminar Registro" + e.getMessage());
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado los datos del paciente" );
         }
     }
 

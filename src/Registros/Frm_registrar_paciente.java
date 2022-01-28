@@ -82,7 +82,7 @@ public class Frm_registrar_paciente extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Sexo");
+        jLabel7.setText("Sexo:");
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -229,8 +229,8 @@ public class Frm_registrar_paciente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(btnRegresar)
                 .addContainerGap())
         );
@@ -325,9 +325,8 @@ public class Frm_registrar_paciente extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addGap(18, 24, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -338,7 +337,9 @@ public class Frm_registrar_paciente extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -556,23 +557,21 @@ public class Frm_registrar_paciente extends javax.swing.JFrame {
     public void eliminarRegistros() {
 
         int filaSeleccionada = tblTabla.getSelectedRow();
-        if ((txtCedula.getText().isEmpty()) || (txtNombre.getText().isEmpty()) || (txtApellido.getText().isEmpty()) || (dateFechaNacimiento.getText().isEmpty()) || (txtNacionalidad.getText().isEmpty()) || (cbSexo.getItemAt(filaSeleccionada).isEmpty()) || (txtDireccion.getText().isEmpty())) {
-            JOptionPane.showMessageDialog(this, "No se ha seleccionado los datos del paciente");
-        } else {
-            try {
-                String SQL = "delete from registro_paciente where Cédula=" + tblTabla.getValueAt(filaSeleccionada, 0);
 
-                Statement st = con.createStatement();
-                int n = st.executeUpdate(SQL);
+        try {
+            String SQL = "delete from registro_paciente where Cédula=" + tblTabla.getValueAt(filaSeleccionada, 0);
 
-                if (n >= 0) {
-                    JOptionPane.showMessageDialog(null, "Registro Eliminado");
-                }
+            Statement st = con.createStatement();
+            int n = st.executeUpdate(SQL);
 
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error al Eliminar Registro" + e.getMessage());
+            if (n >= 0) {
+                JOptionPane.showMessageDialog(null, "Registro Eliminado");
             }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado los datos del paciente");
         }
+
     }
 
     /**
